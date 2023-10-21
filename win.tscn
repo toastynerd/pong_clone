@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://buq0ucq110cka"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_pndsd"]
+[ext_resource type="Texture2D" uid="uid://diqirqd0vhdar" path="res://Assets/play-button.png" id="2_3frgf"]
+[ext_resource type="Texture2D" uid="uid://bg2jw0jr86dtb" path="res://Assets/play-button-hover.png" id="3_i33im"]
+[ext_resource type="Texture2D" uid="uid://8jut73jofdkx" path="res://Assets/quit-button.png" id="4_20jdo"]
+[ext_resource type="Texture2D" uid="uid://bj54ghjec3wwd" path="res://Assets/quit-button-hover.png" id="5_u34bp"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7fonv"]
+
+[node name="Win" type="Node2D"]
+script = ExtResource("1_pndsd")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(320, 180)
+scale = Vector2(640, 360)
+texture = SubResource("CanvasTexture_7fonv")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_left = 320.0
+offset_top = 180.0
+offset_right = 960.0
+offset_bottom = 540.0
+use_top_left = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "You Win!"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="Play" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_3frgf")
+texture_hover = ExtResource("3_i33im")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="Quit" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_20jdo")
+texture_hover = ExtResource("5_u34bp")
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -29,11 +29,15 @@ func _process(delta):
 
 func _on_computer_goal_body_entered(body):
 	computer_score += 1
+	if computer_score == 5:
+		get_tree().change_scene_to_file("res://lose.tscn")
 	computer_score_label.set_text(str(computer_score))
 	reset_position()
 
 
 func _on_player_goal_body_entered(body):
 	player_score += 1
+	if player_score == 5:
+		get_tree().change_scene_to_file("res://win.tscn")
 	player_score_label.set_text(str(player_score))
 	reset_position()
