@@ -7,7 +7,7 @@ size = Vector2(8, 8)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_fj8pe"]
 
-[node name="ball" type="Node2D"]
+[node name="Ball" type="Node2D"]
 
 [node name="Ball" type="CharacterBody2D" parent="."]
 script = ExtResource("2_u53kt")

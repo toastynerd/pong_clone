@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5av07p5dqanp"]
+[gd_scene load_steps=10 format=3 uid="uid://c5av07p5dqanp"]
 
 [ext_resource type="Script" path="res://gameplay.gd" id="1_ixo0b"]
 [ext_resource type="PackedScene" uid="uid://bdovtpn3hx3i0" path="res://player.tscn" id="1_kocsn"]
@@ -12,6 +12,12 @@ size = Vector2(640, 6)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_pxcnt"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ibv3"]
+size = Vector2(20, 375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2prg"]
+size = Vector2(19, 366)
+
 [node name="Gameplay" type="Node2D"]
 script = ExtResource("1_ixo0b")
 
@@ -24,31 +30,58 @@ texture = SubResource("CanvasTexture_01paa")
 [node name="Player" parent="." instance=ExtResource("1_kocsn")]
 position = Vector2(8, 180)
 
-[node name="ball" parent="." instance=ExtResource("2_33d3q")]
+[node name="Ball" parent="." instance=ExtResource("2_33d3q")]
 position = Vector2(320, 180)
 
 [node name="Computer" parent="." instance=ExtResource("3_je317")]
 position = Vector2(632, 184)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Top" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
 position = Vector2(320, 5)
 shape = SubResource("RectangleShape2D_ip6w3")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Top"]
 position = Vector2(320, 4)
 scale = Vector2(640, 8)
 texture = SubResource("CanvasTexture_pxcnt")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="Bottom" type="StaticBody2D" parent="."]
 position = Vector2(0, 352)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
 position = Vector2(320, 2)
 shape = SubResource("RectangleShape2D_ip6w3")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+[node name="Sprite2D" type="Sprite2D" parent="Bottom"]
 position = Vector2(320, 4)
 scale = Vector2(640, 8)
 texture = SubResource("CanvasTexture_pxcnt")
+
+[node name="Computer Goal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Computer Goal"]
+position = Vector2(-19, 178)
+shape = SubResource("RectangleShape2D_0ibv3")
+
+[node name="Player Goal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Goal"]
+position = Vector2(661, 177)
+shape = SubResource("RectangleShape2D_w2prg")
+
+[node name="Player Score" type="Label" parent="."]
+offset_left = 57.0
+offset_top = 15.0
+offset_right = 97.0
+offset_bottom = 38.0
+
+[node name="Computer Score" type="Label" parent="."]
+offset_left = 546.0
+offset_top = 19.0
+offset_right = 586.0
+offset_bottom = 42.0
+
+[connection signal="body_entered" from="Computer Goal" to="." method="_on_computer_goal_body_entered"]
+[connection signal="body_entered" from="Player Goal" to="." method="_on_player_goal_body_entered"]

@@ -1,6 +1,11 @@
 extends CharacterBody2D
 
 var SPEED = 150
+const STARTING_POSITION = Vector2(632, 184)
+
+func reset_position():
+	global_position = STARTING_POSITION
+	velocity = Vector2(0, 0)
 
 func move_towards(target):
 	var direction = 0
