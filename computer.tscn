@@ -9,12 +9,12 @@ size = Vector2(8, 32)
 
 [node name="Computer" type="Node2D"]
 
-[node name="Computer" type="CharacterBody2D" parent="."]
+[node name="Paddle" type="CharacterBody2D" parent="."]
 script = ExtResource("1_wy4nd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Computer"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle"]
 shape = SubResource("RectangleShape2D_hojtc")
 
-[node name="Sprite2D" type="Sprite2D" parent="Computer"]
+[node name="Sprite2D" type="Sprite2D" parent="Paddle"]
 scale = Vector2(8, 32)
 texture = SubResource("CanvasTexture_7wpdi")

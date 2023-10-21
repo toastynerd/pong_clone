@@ -9,12 +9,12 @@ size = Vector2(8, 32)
 
 [node name="Player" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Paddle" type="CharacterBody2D" parent="."]
 script = ExtResource("1_sewfw")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
+[node name="Sprite2D" type="Sprite2D" parent="Paddle"]
 scale = Vector2(8, 32)
 texture = SubResource("CanvasTexture_sqcuh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle"]
 shape = SubResource("RectangleShape2D_5c31y")
