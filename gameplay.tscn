@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5av07p5dqanp"]
+
+[ext_resource type="PackedScene" uid="uid://bdovtpn3hx3i0" path="res://player.tscn" id="1_kocsn"]
+[ext_resource type="PackedScene" uid="uid://dsbiewve48x4x" path="res://ball.tscn" id="2_33d3q"]
+[ext_resource type="PackedScene" uid="uid://cc3xfbmwtl3ls" path="res://computer.tscn" id="3_je317"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_01paa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ip6w3"]
+size = Vector2(640, 6)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_pxcnt"]
+
+[node name="Gameplay" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(320, 180)
+scale = Vector2(640, 360)
+texture = SubResource("CanvasTexture_01paa")
+
+[node name="Player" parent="." instance=ExtResource("1_kocsn")]
+position = Vector2(8, 180)
+
+[node name="ball" parent="." instance=ExtResource("2_33d3q")]
+position = Vector2(320, 180)
+
+[node name="Computer" parent="." instance=ExtResource("3_je317")]
+position = Vector2(632, 184)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(320, 5)
+shape = SubResource("RectangleShape2D_ip6w3")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(320, 4)
+scale = Vector2(640, 8)
+texture = SubResource("CanvasTexture_pxcnt")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(0, 352)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(320, 2)
+shape = SubResource("RectangleShape2D_ip6w3")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(320, 4)
+scale = Vector2(640, 8)
+texture = SubResource("CanvasTexture_pxcnt")
