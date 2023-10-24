@@ -1,9 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://c5av07p5dqanp"]
+[gd_scene load_steps=15 format=3 uid="uid://c5av07p5dqanp"]
 
 [ext_resource type="Script" path="res://gameplay.gd" id="1_ixo0b"]
 [ext_resource type="PackedScene" uid="uid://bdovtpn3hx3i0" path="res://player.tscn" id="1_kocsn"]
 [ext_resource type="PackedScene" uid="uid://dsbiewve48x4x" path="res://ball.tscn" id="2_33d3q"]
 [ext_resource type="PackedScene" uid="uid://cc3xfbmwtl3ls" path="res://computer.tscn" id="3_je317"]
+[ext_resource type="AudioStream" uid="uid://dx7u5qdh032fy" path="res://Assets/Audio/Music/Title Theme.wav" id="5_yxspt"]
+[ext_resource type="AudioStream" uid="uid://buhvm8hr4farr" path="res://Assets/Audio/SFX/Ball Bounce [2023-10-23 161048].aif.wav" id="6_txf07"]
+[ext_resource type="AudioStream" uid="uid://bb2u3xlq6eued" path="res://Assets/Audio/SFX/Ball Bounce Double [2023-10-23 161052].aif.wav" id="7_caci3"]
+[ext_resource type="AudioStream" uid="uid://dlfjjkf5c53s4" path="res://Assets/Audio/SFX/Game Start [2023-10-23 161459].aif.wav" id="8_j7qlx"]
+[ext_resource type="AudioStream" uid="uid://bursr0ljhvgay" path="res://Assets/Audio/SFX/Lose [2023-10-23 161459].aif.wav" id="9_lpdjw"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_01paa"]
 
@@ -82,6 +87,27 @@ offset_left = 546.0
 offset_top = 19.0
 offset_right = 586.0
 offset_bottom = 42.0
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_yxspt")
+volume_db = -10.0
+bus = &"Music"
+
+[node name="Bounce" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_txf07")
+bus = &"SFX"
+
+[node name="Point" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_caci3")
+bus = &"SFX"
+
+[node name="Win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_j7qlx")
+bus = &"SFX"
+
+[node name="Lose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_lpdjw")
+bus = &"SFX"
 
 [connection signal="body_entered" from="Computer Goal" to="." method="_on_computer_goal_body_entered"]
 [connection signal="body_entered" from="Player Goal" to="." method="_on_player_goal_body_entered"]

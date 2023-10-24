@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdjh486b0jnjo"]
+[gd_scene load_steps=11 format=3 uid="uid://cdjh486b0jnjo"]
 
 [ext_resource type="Texture2D" uid="uid://diqirqd0vhdar" path="res://Assets/play-button.png" id="1_1ton0"]
 [ext_resource type="Script" path="res://menu.gd" id="1_i28c0"]
 [ext_resource type="Texture2D" uid="uid://bg2jw0jr86dtb" path="res://Assets/play-button-hover.png" id="2_vrcbx"]
 [ext_resource type="Texture2D" uid="uid://8jut73jofdkx" path="res://Assets/quit-button.png" id="3_0qlol"]
 [ext_resource type="Texture2D" uid="uid://bj54ghjec3wwd" path="res://Assets/quit-button-hover.png" id="4_osu5q"]
+[ext_resource type="AudioStream" uid="uid://dx7u5qdh032fy" path="res://Assets/Audio/Music/Title Theme.wav" id="6_b88a5"]
+[ext_resource type="AudioStream" uid="uid://buhvm8hr4farr" path="res://Assets/Audio/SFX/Ball Bounce [2023-10-23 161048].aif.wav" id="7_e8uqd"]
+[ext_resource type="AudioStream" uid="uid://dp4u7lh27dbfc" path="res://Assets/Audio/SFX/Ball Bounce Double [2023-10-23 161458].aif.wav" id="8_amhmo"]
+[ext_resource type="AudioStream" uid="uid://dlfjjkf5c53s4" path="res://Assets/Audio/SFX/Game Start [2023-10-23 161459].aif.wav" id="9_3udc5"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_fqpim"]
 
@@ -39,5 +43,24 @@ layout_mode = 2
 texture_normal = ExtResource("3_0qlol")
 texture_hover = ExtResource("4_osu5q")
 
+[node name="TitleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_b88a5")
+volume_db = -10.0
+bus = &"Music"
+
+[node name="HoverQuitSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_e8uqd")
+bus = &"SFX"
+
+[node name="HoverPlaySfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_amhmo")
+bus = &"SFX"
+
+[node name="StartGame" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_3udc5")
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Play" to="." method="_on_play_mouse_entered"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

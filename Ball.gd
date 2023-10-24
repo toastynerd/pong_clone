@@ -3,6 +3,7 @@ extends CharacterBody2D
 const INCREASE = 10
 const STARTING_POSITION = Vector2(320, 180)
 var rng = RandomNumberGenerator.new()
+@onready var bounce = $"../Bounce"
 
 func get_direction():
 	var direction_x = rng.randi_range(0, 1)
@@ -26,6 +27,7 @@ func _ready():
 func _physics_process(delta):
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
+		bounce.play()
 		if velocity.x > 0:
 			velocity.x += INCREASE
 		else:

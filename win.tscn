@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://buq0ucq110cka"]
+[gd_scene load_steps=11 format=3 uid="uid://buq0ucq110cka"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_pndsd"]
 [ext_resource type="Texture2D" uid="uid://diqirqd0vhdar" path="res://Assets/play-button.png" id="2_3frgf"]
 [ext_resource type="Texture2D" uid="uid://bg2jw0jr86dtb" path="res://Assets/play-button-hover.png" id="3_i33im"]
 [ext_resource type="Texture2D" uid="uid://8jut73jofdkx" path="res://Assets/quit-button.png" id="4_20jdo"]
 [ext_resource type="Texture2D" uid="uid://bj54ghjec3wwd" path="res://Assets/quit-button-hover.png" id="5_u34bp"]
+[ext_resource type="AudioStream" uid="uid://dx7u5qdh032fy" path="res://Assets/Audio/Music/Title Theme.wav" id="6_wg6lw"]
+[ext_resource type="AudioStream" uid="uid://buhvm8hr4farr" path="res://Assets/Audio/SFX/Ball Bounce [2023-10-23 161048].aif.wav" id="7_051e8"]
+[ext_resource type="AudioStream" uid="uid://dp4u7lh27dbfc" path="res://Assets/Audio/SFX/Ball Bounce Double [2023-10-23 161458].aif.wav" id="8_nrp5y"]
+[ext_resource type="AudioStream" uid="uid://dlfjjkf5c53s4" path="res://Assets/Audio/SFX/Game Start [2023-10-23 161459].aif.wav" id="9_38ssa"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7fonv"]
 
@@ -50,6 +54,23 @@ size_flags_stretch_ratio = 0.0
 layout_mode = 2
 texture_normal = ExtResource("4_20jdo")
 texture_hover = ExtResource("5_u34bp")
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_wg6lw")
+volume_db = -10.0
+bus = &"Music"
+
+[node name="HoverQuitSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_051e8")
+bus = &"SFX"
+
+[node name="HoverPlaySfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_nrp5y")
+bus = &"SFX"
+
+[node name="StartGame" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_38ssa")
+bus = &"SFX"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

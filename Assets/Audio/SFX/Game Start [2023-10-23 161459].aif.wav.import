@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dlfjjkf5c53s4"
+path="res://.godot/imported/Game Start [2023-10-23 161459].aif.wav-614dbb0dc156fda3397b0a677951da37.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Game Start [2023-10-23 161459].aif.wav"
+dest_files=["res://.godot/imported/Game Start [2023-10-23 161459].aif.wav-614dbb0dc156fda3397b0a677951da37.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
